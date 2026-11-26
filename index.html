@@ -64,13 +64,13 @@
         // =========================================================================
         // KONFIGURASI RASMI SMART COB MPHS
         // =========================================================================
-        const DEFAULT_LOGO_FILE = "VECTOR LOGO RASMI MPHS - 21102021(LOGO FINAL).jpg";
+        const DEFAULT_LOGO_FILE = "./LOGO MPHS PAGE LIFT.png";
         const FALLBACK_MPHS_LOGO = "https://lh3.googleusercontent.com/gg/AJWXcNd-jEPg2aF1tEPRrcPdQuKwPkHiVu6LE4yPDyJJgA2EWj88hNKtViIDC4y77oMvIIOEisSMH4jtj2PfngSh-O1Z0HW4lQ4sTkf_JFis4M-ymOKliTPNlFwaPySyouA0JIt_RgrK7Dpuejcp_HX3zflpe0VUt77wcQ0w4SOUmFAmbRruTDMFZkIuI2iHo6Z5upki4Mu9Z3HpS6SZwOpJveCbQkGHVJe5J_AmNyzc5TDqkqSYjJ7M2PY-aadrN_eQrlsy2ViMrReDfazQhmod4-hKZh9Fp6d9MIA=s0";
         let OFFICIAL_MPHS_LOGO = localStorage.getItem('esmart_cob_custom_logo') || DEFAULT_LOGO_FILE;
         const DEPARTMENT_EMAIL = "cob@mphs.gov.my";
 
         const STORAGE_KEYS = {
-            USERS: 'esmart_cob_users_v2',
+            USERS: 'esmart_cob_users_v3',
             LETTERS: 'esmart_cob_letters_v2',
             ANNOUNCEMENTS: 'esmart_cob_announcements_v2',
             SESSION: 'esmart_cob_session'
@@ -103,13 +103,76 @@
                 role: 'admin'
             },
             {
-                id: 'usr-hod',
-                name: 'Tuan Haji Ahmad Razak',
-                username: 'ketua',
+                id: 'usr-hod-asshima',
+                name: 'NURUL ASSHIMA BT AMINULLAH',
+                username: 'asshima',
                 password: '123',
                 position: 'Ketua Bahagian COB',
-                email: 'ketua.cob@mphs.gov.my',
+                email: 'asshima@mphs.gov.my',
                 role: 'hod'
+            },
+            {
+                id: 'usr-off-ajmal',
+                name: 'PMgr NABILAH AJMAL BT AMIR KAMALUDIN',
+                username: 'ajmal',
+                password: '123',
+                position: 'Penolong Pegawai Penilaian',
+                email: 'ajmal@mphs.gov.my',
+                role: 'officer'
+            },
+            {
+                id: 'usr-off-anis',
+                name: 'SITI NUR AZWANIS BT CHE AZIZAN',
+                username: 'anis',
+                password: '123',
+                position: 'Penolong Pegawai Penilaian',
+                email: 'azwanis@mphs.gov.my',
+                role: 'officer'
+            },
+            {
+                id: 'usr-off-harilazalan',
+                name: 'Sr MUHAMMAD HARILAZALAN BIN HASAN',
+                username: 'harilazalan',
+                password: '123',
+                position: 'Penolong Pegawai Penilaian',
+                email: 'harilazalan@mphs.gov.my',
+                role: 'officer'
+            },
+            {
+                id: 'usr-adm-yusuf',
+                name: 'MOHD YUSUF BIN SAIDINA ABU BAKAR',
+                username: 'yusuf',
+                password: '123',
+                position: 'Penolong Pegawai Tadbir',
+                email: 'yusuf@mphs.gov.my',
+                role: 'admin'
+            },
+            {
+                id: 'usr-off-zaid',
+                name: 'ZAID BIN ZAKARIA',
+                username: 'zaid',
+                password: '123',
+                position: 'Penolong Akauntan',
+                email: 'zaid@mphs.gov.my',
+                role: 'officer'
+            },
+            {
+                id: 'usr-adm-amir',
+                name: 'AMIRRUDDIN BIN SOHOR',
+                username: 'amir',
+                password: '123',
+                position: 'Pembantu Tadbir',
+                email: 'amirruddin@mphs.gov.my',
+                role: 'admin'
+            },
+            {
+                id: 'usr-adm-zuhanna',
+                name: 'NURUL ZUHANNA ALIA BT ABDUL RAZAK',
+                username: 'zuhanna',
+                password: '123',
+                position: 'Pembantu Tadbir',
+                email: 'zuhanna@mphs.gov.my',
+                role: 'admin'
             },
             {
                 id: 'usr-1',
@@ -348,8 +411,8 @@
         function getLogoImgTag(extraClass = "max-w-full max-h-full w-auto h-auto object-contain mx-auto block") {
             return `
                 <div class="w-full h-full flex items-center justify-center">
-                    <img src="${OFFICIAL_MPHS_LOGO}" referrerpolicy="no-referrer" alt="Logo Rasmi MPHS" class="${extraClass}"
-                        onerror="if(!this.dataset.triedFallback){this.dataset.triedFallback='1';this.src='${FALLBACK_MPHS_LOGO}';}else{this.style.display='none';if(this.nextElementSibling)this.nextElementSibling.style.display='flex';}">
+                    <img src="${OFFICIAL_MPHS_LOGO}" alt="Logo Rasmi MPHS" class="${extraClass}"
+                        onerror="if(!this.dataset.triedSecondary){this.dataset.triedSecondary='1';this.src='./VECTOR LOGO RASMI MPHS - 21102021(LOGO FINAL).jpg';}else if(!this.dataset.triedFallback){this.dataset.triedFallback='1';this.src='${FALLBACK_MPHS_LOGO}';}else{this.style.display='none';if(this.nextElementSibling)this.nextElementSibling.style.display='flex';}">
                     <div class="hidden w-full h-full items-center justify-center text-green-800 text-2xl"><i class="fa-solid fa-landmark"></i></div>
                 </div>
             `;
@@ -572,7 +635,7 @@
             localStorage.removeItem('esmart_cob_custom_logo');
             OFFICIAL_MPHS_LOGO = DEFAULT_LOGO_FILE;
             closeModal();
-            showToast('Logo ditetapkan semula ke fail lalai VECTOR LOGO RASMI MPHS - 21102021(LOGO FINAL).jpg.', 'info');
+            showToast('Logo ditetapkan semula ke fail lalai LOGO MPHS PAGE LIFT.png.', 'info');
             renderApp();
         };
 
@@ -624,12 +687,15 @@
         // =========================================================================
         function handleLogin(e) {
             e.preventDefault();
-            const usernameInput = document.getElementById('login-username').value.trim().toLowerCase();
+            const identifierInput = document.getElementById('login-username').value.trim().toLowerCase();
             const passwordInput = document.getElementById('login-password').value;
 
-            const found = users.find(u => u.username.toLowerCase() === usernameInput && u.password === passwordInput);
+            const found = users.find(u =>
+                (u.username.toLowerCase() === identifierInput || (u.email && u.email.toLowerCase() === identifierInput)) &&
+                u.password === passwordInput
+            );
             if (!found) {
-                showToast('ID Pengguna atau Kata Laluan tidak sah!', 'error');
+                showToast('ID Pengguna / Emel atau Kata Laluan tidak sah!', 'error');
                 return;
             }
 
